@@ -100,7 +100,10 @@ unzipWith f []         = [] , []
 unzipWith f (xy ∷ xys) = Prod.zip _∷_ _∷_ (f xy) (unzipWith f xys)
 
 partitionSumsWith : (A → B ⊎ C) → List A → List B × List C
-partitionSumsWith f = unalignWith (These.fromSum ∘′ f)
+partitionSumsWith f [] = [] , []
+partitionSumsWith f (x ∷ xs) with f x | partitionSumsWith f xs
+... | inj₁ b | (bs , cs) = (b ∷ bs , cs)
+... | inj₂ c | (bs , cs) = (bs , c ∷ cs)
 
 align : List A → List B → List (These A B)
 align = alignWith id

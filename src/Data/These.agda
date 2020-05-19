@@ -11,8 +11,7 @@ module Data.These where
 open import Level
 open import Data.Maybe.Base using (Maybe; just; nothing; maybe′)
 open import Data.Sum.Base using (_⊎_; [_,_]′)
-open import Function
-
+open import Function.Base using (const; _∘′_; id; flip)
 
 ------------------------------------------------------------------------
 -- Re-exporting the datatype and its operations
@@ -27,6 +26,11 @@ private
 
 ------------------------------------------------------------------------
 -- Additional operations
+
+-- injection
+
+fromSum : A ⊎ B → These A B
+fromSum = [ this , that ]′
 
 -- projections
 

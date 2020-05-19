@@ -13,7 +13,6 @@ module Data.Maybe.Base where
 open import Level
 open import Data.Bool.Base using (Bool; true; false; not)
 open import Data.Unit.Base using (⊤)
-open import Data.These.Base using (These; this; that; these)
 open import Data.Product as Prod using (_×_; _,_)
 open import Function.Base
 open import Relation.Nullary.Reflects
@@ -107,29 +106,11 @@ just x  <∣> my = just x
 nothing <∣> my = my
 
 ------------------------------------------------------------------------
--- Aligning and zipping
-
-alignWith : (These A B → C) → Maybe A → Maybe B → Maybe C
-alignWith f (just a) (just b) = just (f (these a b))
-alignWith f (just a) nothing  = just (f (this a))
-alignWith f nothing  (just b) = just (f (that b))
-alignWith f nothing  nothing  = nothing
+-- Zipping
 
 zipWith : (A → B → C) → Maybe A → Maybe B → Maybe C
 zipWith f (just a) (just b) = just (f a b)
 zipWith _ _        _        = nothing
 
-align : Maybe A → Maybe B → Maybe (These A B)
-align = alignWith id
-
 zip : Maybe A → Maybe B → Maybe (A × B)
 zip = zipWith _,_
-
-------------------------------------------------------------------------
--- Injections.
-
-thisM : A → Maybe B → These A B
-thisM a = maybe′ (these a) (this a)
-
-thatM : Maybe A → B → These A B
-thatM = maybe′ these that

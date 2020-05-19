@@ -10,7 +10,7 @@ module Data.Sum where
 
 open import Function.Base
 open import Data.Unit.Base using (⊤; tt)
-open import Data.Maybe.Base using (Maybe; just; nothing)
+open import Data.Maybe.Base using (Maybe; just; nothing; maybe′)
 open import Level
 open import Agda.Builtin.Equality
 
@@ -22,8 +22,7 @@ open import Data.Sum.Base public
 ------------------------------------------------------------------------
 -- Additional functions
 
-module _ {a b} {A : Set a} {B : Set b} where
-
+module _ {a b : Level} {A : Set a} {B : Set b} where
   isInj₁ : A ⊎ B → Maybe A
   isInj₁ (inj₁ x) = just x
   isInj₁ (inj₂ y) = nothing

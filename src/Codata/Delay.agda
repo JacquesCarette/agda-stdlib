@@ -15,7 +15,7 @@ open import Codata.Conat using (Conat; zero; suc; Finite)
 open import Data.Empty
 open import Relation.Nullary
 open import Data.Nat.Base
-open import Data.Maybe.Base hiding (map ; fromMaybe ; zipWith ; alignWith ; zip ; align)
+open import Data.Maybe.Base hiding (map ; fromMaybe ; zipWith ; zip )
 open import Data.Product as P hiding (map ; zip)
 open import Data.Sum.Base as S hiding (map)
 open import Data.These.Base as T using (These; this; that; these)

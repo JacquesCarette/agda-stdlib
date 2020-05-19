@@ -9,7 +9,6 @@
 module Data.These.Base where
 
 open import Level
-open import Data.Sum.Base using (_⊎_; [_,_]′)
 open import Function.Base
 
 private
@@ -29,11 +28,6 @@ data These {a b} (A : Set a) (B : Set b) : Set (a ⊔ b) where
 
 ------------------------------------------------------------------------
 -- Operations
-
--- injection
-
-fromSum : A ⊎ B → These A B
-fromSum = [ this , that ]′
 
 -- map
 
