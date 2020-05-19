@@ -23,6 +23,7 @@ open import Relation.Binary.PropositionalEquality as P using (_≡_)
 open import Relation.Nullary
 open import Relation.Nullary.Decidable hiding (map)
 open import Relation.Nullary.Negation
+open import Relation.Nullary.Negation.Categorical
 
 private
   variable

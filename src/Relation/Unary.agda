@@ -8,6 +8,8 @@
 
 module Relation.Unary where
 
+-- use this instead of PropositionalEquality.Core to reduce dependencies
+open import Agda.Builtin.Equality
 open import Data.Empty
 open import Data.Unit.Base using (⊤)
 open import Data.Product
@@ -16,7 +18,6 @@ open import Function.Base
 open import Level
 open import Relation.Nullary hiding (Irrelevant)
 open import Relation.Nullary.Decidable.Core using (True)
-open import Relation.Binary.PropositionalEquality.Core using (_≡_)
 
 private
   variable

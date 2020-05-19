@@ -8,24 +8,25 @@
 
 module Relation.Nullary.Universe where
 
-open import Relation.Nullary
-open import Relation.Nullary.Negation
+open import Category.Applicative
+open import Category.Monad
+open import Data.Empty
+open import Data.Product as Prod hiding (map)
+open import Data.Product.Relation.Binary.Pointwise.NonDependent
+open import Data.Sum     as Sum  hiding (map)
+open import Data.Sum.Relation.Binary.Pointwise
+open import Function
+import Function.Equality as FunS
+open import Level
 open import Relation.Binary hiding (_⇒_)
 import Relation.Binary.Construct.Always as Always
 open import Relation.Binary.PropositionalEquality as PropEq
   using (_≡_; refl)
 import Relation.Binary.Indexed.Heterogeneous.Construct.Trivial
   as Trivial
-open import Data.Sum     as Sum  hiding (map)
-open import Data.Sum.Relation.Binary.Pointwise
-open import Data.Product as Prod hiding (map)
-open import Data.Product.Relation.Binary.Pointwise.NonDependent
-open import Function
-import Function.Equality as FunS
-open import Data.Empty
-open import Category.Applicative
-open import Category.Monad
-open import Level
+open import Relation.Nullary
+open import Relation.Nullary.Negation
+open import Relation.Nullary.Negation.Categorical
 
 infix  5 ¬¬_
 infixr 4 _⇒_

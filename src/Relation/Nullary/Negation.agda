@@ -8,12 +8,11 @@
 
 module Relation.Nullary.Negation where
 
-open import Category.Monad
 open import Data.Bool.Base using (Bool; false; true; if_then_else_; not)
 open import Data.Empty
 open import Data.Product as Prod
 open import Data.Sum.Base as Sum using (_⊎_; inj₁; inj₂; [_,_])
-open import Function
+open import Function.Base
 open import Level
 open import Relation.Nullary
 open import Relation.Nullary.Decidable
@@ -102,15 +101,6 @@ decidable-stable (no ¬p) ¬¬p = ⊥-elim (¬¬p ¬p)
 
 ¬-drop-Dec : Dec (¬ ¬ P) → Dec (¬ P)
 ¬-drop-Dec ¬¬p? = map′ negated-stable contradiction (¬? ¬¬p?)
-
--- Double-negation is a monad (if we assume that all elements of ¬ ¬ P
--- are equal).
-
-¬¬-Monad : RawMonad (λ (P : Set p) → ¬ ¬ P)
-¬¬-Monad = record
-  { return = contradiction
-  ; _>>=_  = λ x f → negated-stable (¬¬-map f x)
-  }
 
 ¬¬-push : ∀ {P : Set p} {Q : P → Set q} →
           ¬ ¬ ((x : P) → Q x) → (x : P) → ¬ ¬ Q x
