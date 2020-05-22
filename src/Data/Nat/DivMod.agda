@@ -16,7 +16,6 @@ open import Data.Nat.Base as Nat
 open import Data.Nat.DivMod.Core
 open import Data.Nat.Divisibility.Core
 open import Data.Nat.Properties
-open import Data.Nat.Tactic.RingSolver
 open import Relation.Binary.PropositionalEquality
 open import Relation.Nullary.Decidable using (False)
 
@@ -129,8 +128,17 @@ m<[1+n%d]⇒m≤[n%d] {m} n (suc d-1) = k<1+a[modₕ]n⇒k≤a[modₕ]n 0 m n d-
   n′ = n % d
   k = m / d
   j = n / d
+  -- This proof can be had by the ring tactic solver, BUT doing so drags in way too
+  -- many dependencies.
   lemma : ∀ m′ n′ k j d → (m′ + k * d) * (n′ + j * d) ≡ m′ * n′ + (m′ * j + (n′ + j * d) * k) * d
-  lemma = solve-∀
+  lemma m′ n′ k j d = begin-equality
+    (m′ + k * d) * (n′ + j * d)                          ≡⟨ *-distribʳ-+ _ m′ (k * d) ⟩
+    m′ * (n′ + j * d) + (k * d * (n′ + j * d))           ≡⟨ cong₂ _+_ (*-distribˡ-+ m′ n′ (j * d)) (*-assoc k d _) ⟩
+    m′ * n′ + m′ * (j * d) + (k * (d * (n′ + j * d)))    ≡⟨ +-assoc (m′ * n′) _ _ ⟩
+    m′ * n′ + (m′ * (j * d) + (k * (d * (n′ + j * d))))  ≡⟨ cong (m′ * n′ +_) (cong₂ _+_ (sym (*-assoc m′ j d)) (trans (cong (k *_) (*-comm d _)) (sym (*-assoc k _ d)))) ⟩
+    m′ * n′ + (m′ * j * d + k * (n′ + j * d) * d)        ≡˘⟨ cong (m′ * n′ +_) (*-distribʳ-+ d (m′ * j) _) ⟩
+    m′ * n′ + (m′ * j + k * (n′ + j * d)) * d            ≡⟨ cong (λ x → (m′ * n′ + (m′ * j + x) * d)) (*-comm k _) ⟩
+    m′ * n′ + (m′ * j + (n′ + j * d) * k) * d ∎
 
 %-remove-+ˡ : ∀ {m} n {d} {≢0} → d ∣ m → ((m + n) % d) {≢0} ≡ (n % d) {≢0}
 %-remove-+ˡ {m} n {d@(suc d-1)} (divides p refl) = begin-equality
