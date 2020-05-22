@@ -16,9 +16,10 @@ open import Data.Empty using (⊥-elim)
 open import Data.Product as Prod using (∃; _,_; proj₁; proj₂; <_,_>; uncurry; curry)
 open import Data.Sum.Base as S using (inj₁; inj₂; [_,_]′; [_,_])
 open import Function as F using (_∘′_)
+open import Function.Equality.Pointwise using (_≗_)
 open import Function.Inverse as Inv using (_↔_; inverse; module Inverse)
 open import Level using (_⊔_; lower)
-open import Relation.Binary.PropositionalEquality as P using (_≡_; _≗_)
+open import Relation.Binary.PropositionalEquality as P using (_≡_)
 
 -- I have proved some of the correctness statements under the
 -- assumption of functional extensionality. I could have reformulated

@@ -28,6 +28,7 @@ import Data.Product.Function.Dependent.Propositional as Σ
 open import Data.Sum.Base as Sum using (_⊎_; inj₁; inj₂)
 open import Function.Base
 open import Function.Equality using (_⟨$⟩_)
+open import Function.Equality.Pointwise
 open import Function.Equivalence using (module Equivalence)
 open import Function.Injection using (Injection; Injective; _↣_)
 open import Function.Inverse as Inv using (_↔_; module Inverse)
@@ -36,7 +37,7 @@ open import Function.Related.TypeIsomorphisms
 open import Level using (Level)
 open import Relation.Binary as B hiding (Decidable)
 open import Relation.Binary.PropositionalEquality as P
-  using (_≡_; _≢_; refl; sym; trans; cong; subst; →-to-⟶; _≗_)
+  using (_≡_; _≢_; refl; sym; trans; cong; subst)
 import Relation.Binary.Properties.DecTotalOrder as DTOProperties
 open import Relation.Unary using (_⟨×⟩_; Decidable)
 open import Relation.Nullary.Reflects using (invert)

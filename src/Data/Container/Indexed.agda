@@ -17,10 +17,11 @@ open import Data.Product as Prod hiding (map)
 open import Data.W.Indexed
 open import Function.Base renaming (id to ⟨id⟩; _∘_ to _⟨∘⟩_)
 open import Function.Equality using (_⟨$⟩_)
+open import Function.Equality.Pointwise using (_≗_)
 open import Function.Inverse using (_↔_; module Inverse)
 open import Relation.Unary using (Pred; _⊆_)
 import Relation.Binary as B
-open import Relation.Binary.PropositionalEquality as P using (_≡_; _≗_; refl)
+open import Relation.Binary.PropositionalEquality as P using (_≡_; refl)
 
 ------------------------------------------------------------------------
 

@@ -23,11 +23,12 @@ open import Data.Product using (_,_; proj₁; proj₂)
 open import Data.Vec.Base as Vec using (Vec)
 import Data.Vec.Categorical as VecCat
 import Function.Identity.Categorical as IdCat
+open import Function.Equality.Pointwise using (_≗_)
 open import Data.Vec.Properties using (lookup-map)
 open import Data.Vec.Relation.Binary.Pointwise.Extensional as PW
   using (Pointwise; ext)
 open import Function
-open import Relation.Binary.PropositionalEquality as P using (_≗_)
+import Relation.Binary.PropositionalEquality as P
 import Relation.Binary.Reflection as Reflection
 
 -- Expressions made up of variables and the operations of a boolean

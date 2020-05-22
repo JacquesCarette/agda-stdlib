@@ -33,13 +33,14 @@ open import Data.Nat.Properties using (≤-refl; ≤-step)
 open import Data.Product as Prod using (_×_; _,_; uncurry; uncurry′)
 open import Function.Base
 open import Function.Equality using (_⟨$⟩_)
+open import Function.Equality.Pointwise
 open import Function.Equivalence using (_⇔_; equivalence; Equivalence)
 open import Function.Inverse using (_↔_; inverse)
 open import Function.Surjection using (_↠_; surjection)
 open import Level using (Level)
 open import Relation.Binary as B using (REL; Setoid; _Respects_)
 open import Relation.Binary.PropositionalEquality
-  using (_≡_; refl; cong; cong₂; _≗_)
+  using (_≡_; refl; cong; cong₂)
 open import Relation.Nullary.Reflects using (invert)
 open import Relation.Nullary
 open import Relation.Nullary.Negation using (¬?; contradiction; decidable-stable)

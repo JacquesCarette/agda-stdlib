@@ -30,9 +30,10 @@ open import Data.List.Relation.Binary.Sublist.Heterogeneous
   hiding (lookup)
 open import Data.List.Relation.Binary.Sublist.Heterogeneous.Properties
 open import Function
+open import Function.Equality.Pointwise
 
 open import Relation.Binary.PropositionalEquality as P
-  using (_≡_; _≗_; sym; cong; cong₂; subst₂)
+  using (_≡_; sym; cong; cong₂; subst₂)
 open import Relation.Nullary
 
 open P.≡-Reasoning

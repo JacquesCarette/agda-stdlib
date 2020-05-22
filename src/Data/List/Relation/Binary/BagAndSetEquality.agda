@@ -29,6 +29,7 @@ open import Data.Sum.Function.Propositional using (_⊎-cong_)
 open import Data.Unit
 open import Function.Base
 open import Function.Equality using (_⟨$⟩_)
+open import Function.Equality.Pointwise using (_≗_; →-to-⟶)
 import Function.Equivalence as FE
 open import Function.Inverse as Inv using (_↔_; Inverse; inverse)
 open import Function.Related as Related
@@ -39,7 +40,7 @@ open import Relation.Binary
 import Relation.Binary.Reasoning.Setoid as EqR
 import Relation.Binary.Reasoning.Preorder as PreorderReasoning
 open import Relation.Binary.PropositionalEquality as P
-  using (_≡_; _≢_; _≗_; refl)
+  using (_≡_; _≢_; refl)
 open import Relation.Nullary
 open import Data.List.Membership.Propositional.Properties
 
@@ -137,8 +138,8 @@ module _ {ℓ k} {A B : Set ℓ} {f g : A → B} {xs ys} where
 
     helper : ∀ y → x ≡ f y ↔ x ≡ g y
     helper y = record
-      { to         = P.→-to-⟶ (λ x≡fy → P.trans x≡fy (        f≗g y))
-      ; from       = P.→-to-⟶ (λ x≡gy → P.trans x≡gy (P.sym $ f≗g y))
+      { to         = →-to-⟶ (λ x≡fy → P.trans x≡fy (        f≗g y))
+      ; from       = →-to-⟶ (λ x≡gy → P.trans x≡gy (P.sym $ f≗g y))
       ; inverse-of = record
         { left-inverse-of  = λ { P.refl → P.trans-symʳ (f≗g y) }
         ; right-inverse-of = λ { P.refl → P.trans-symˡ (f≗g y) }

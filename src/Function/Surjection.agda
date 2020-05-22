@@ -16,6 +16,7 @@ module Function.Surjection where
 open import Level
 open import Function.Equality as F
   using (_⟶_) renaming (_∘_ to _⟪∘⟫_)
+open import Function.Equality.Pointwise as FP
 open import Function.Equivalence using (Equivalence)
 open import Function.Injection           hiding (id; _∘_; injection)
 open import Function.LeftInverse as Left hiding (id; _∘_)
@@ -95,9 +96,9 @@ surjection : ∀ {f t} {From : Set f} {To : Set t} →
              (∀ x → to (from x) ≡ x) →
              From ↠ To
 surjection to from surjective = record
-  { to         = P.→-to-⟶ to
+  { to         = FP.→-to-⟶ to
   ; surjective = record
-    { from             = P.→-to-⟶ from
+    { from             = FP.→-to-⟶ from
     ; right-inverse-of = surjective
     }
   }

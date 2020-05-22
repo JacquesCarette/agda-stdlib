@@ -21,11 +21,12 @@ open import Data.Sum.Base using ([_,_]′)
 open import Data.Sum.Properties using ([,]-map-commute)
 open import Data.Vec.Base
 open import Function.Base
+open import Function.Equality.Pointwise using (_≗_)
 open import Function.Inverse using (_↔_; inverse)
 open import Level using (Level)
 open import Relation.Binary as B hiding (Decidable)
 open import Relation.Binary.PropositionalEquality as P
-  using (_≡_; _≢_; refl; _≗_; cong₂)
+  using (_≡_; _≢_; refl; cong₂)
 open import Relation.Unary using (Pred; Decidable)
 open import Relation.Nullary using (Dec; does; yes; no)
 open import Relation.Nullary.Decidable using (map′)

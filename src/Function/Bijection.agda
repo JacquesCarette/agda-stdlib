@@ -19,6 +19,7 @@ open import Relation.Binary
 open import Relation.Binary.PropositionalEquality as P
 open import Function.Equality as F
   using (_⟶_; _⟨$⟩_) renaming (_∘_ to _⟪∘⟫_)
+open import Function.Equality.Pointwise as FP
 open import Function.Injection   as Inj  hiding (id; _∘_; injection)
 open import Function.Surjection  as Surj hiding (id; _∘_; surjection)
 open import Function.LeftInverse as Left hiding (id; _∘_; leftInverse)
@@ -90,11 +91,11 @@ bijection : ∀ {f t} {From : Set f} {To : Set t} →
             (∀ x → to (from x) ≡ x) →
             From ⤖ To
 bijection to from inj invʳ = record
-  { to        = P.→-to-⟶ to
+  { to        = FP.→-to-⟶ to
   ; bijective = record
     { injective  = inj
     ; surjective = record
-      { from             = P.→-to-⟶ from
+      { from             = FP.→-to-⟶ from
       ; right-inverse-of = invʳ
       }
     }

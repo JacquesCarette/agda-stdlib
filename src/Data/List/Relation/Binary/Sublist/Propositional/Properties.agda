@@ -21,6 +21,7 @@ import Data.List.Relation.Binary.Sublist.Setoid.Properties
   as SetoidProperties
 open import Data.Product using (∃; _,_; proj₂)
 open import Function.Base
+open import Function.Equality.Pointwise using (_≗_)
 open import Level using (Level)
 open import Relation.Binary using (_Respects_)
 open import Relation.Binary.PropositionalEquality

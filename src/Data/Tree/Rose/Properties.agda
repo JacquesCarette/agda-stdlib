@@ -16,6 +16,7 @@ import Data.List.Properties as Listₚ
 open import Data.Nat.Base using (ℕ; zero; suc)
 open import Data.Tree.Rose
 open import Function.Base
+open import Function.Equality.Pointwise
 open import Relation.Binary.PropositionalEquality
 open ≡-Reasoning
 

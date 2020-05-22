@@ -14,7 +14,6 @@ open import Algebra.Definitions
 import Axiom.Extensionality.Propositional as Ext
 open import Axiom.UniquenessOfIdentityProofs
 open import Function.Base
-open import Function.Equality using (Π; _⟶_; ≡-setoid)
 open import Level using (Level; _⊔_)
 open import Data.Product using (∃)
 
@@ -99,28 +98,6 @@ preorder A = record
   ; isPreorder = isPreorder
   }
 
-------------------------------------------------------------------------
--- Pointwise equality
-
-infix 4 _≗_
-
-_→-setoid_ : ∀ (A : Set a) (B : Set b) → Setoid _ _
-A →-setoid B = ≡-setoid A (Trivial.indexedSetoid (setoid B))
-
-_≗_ : (f g : A → B) → Set _
-_≗_ {A = A} {B = B} = Setoid._≈_ (A →-setoid B)
-
-:→-to-Π : ∀ {A : Set a} {B : IndexedSetoid A b ℓ} →
-          ((x : A) → IndexedSetoid.Carrier B x) → Π (setoid A) B
-:→-to-Π {B = B} f = record
-  { _⟨$⟩_ = f
-  ; cong  = λ { refl → IndexedSetoid.refl B }
-  }
-  where open IndexedSetoid B using (_≈_)
-
-→-to-⟶ : ∀ {A : Set a} {B : Setoid b ℓ} →
-         (A → Setoid.Carrier B) → setoid A ⟶ B
-→-to-⟶ = :→-to-Π
 
 ------------------------------------------------------------------------
 -- Inspect

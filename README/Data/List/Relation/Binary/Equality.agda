@@ -46,7 +46,7 @@ lem₂ : (λ x → 2 * x + 2) ∷ [] ≡ (λ x → 2 * (x + 1)) ∷ []
 -- equal for any input. This notion of function equality `_≗_` is
 -- found in:
 
-open import Relation.Binary.PropositionalEquality using (_≗_)
+open import Function.Equality.Pointwise using (_≗_)
 
 -- We now want to use the `Pointwise` relation to say that the two
 -- lists are equal if their elements are pointwise equal with resepct
@@ -82,7 +82,7 @@ import Data.List.Relation.Binary.Equality.DecPropositional as DecPropEq
 -- the `_≗_` relation forms a setoid over functions of the type `ℕ → ℕ`.
 -- This is found in:
 
-open import Relation.Binary.PropositionalEquality using (_→-setoid_)
+open import Function.Equality.Pointwise using (_→-setoid_)
 
 -- The `SetoidEq` module should therefore be opened as follows:
 

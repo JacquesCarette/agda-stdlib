@@ -15,6 +15,7 @@ open import Data.Maybe.Base
 open import Data.Maybe.Relation.Unary.All using (All; just; nothing)
 open import Data.Product using (_,_)
 open import Function
+open import Function.Equality.Pointwise
 open import Level using (Level)
 open import Relation.Binary using (Decidable)
 open import Relation.Binary.PropositionalEquality

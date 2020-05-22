@@ -16,6 +16,7 @@ import Data.Product.Function.Dependent.Propositional as Σ
 open import Data.Sum.Base using (_⊎_; inj₁; inj₂; [_,_])
 open import Function.Base
 open import Function.Equality using (_⟨$⟩_)
+open import Function.Equality.Pointwise using (_≗_)
 open import Function.Equivalence using (equivalence)
 open import Function.HalfAdjointEquivalence using (_≃_; ↔→≃)
 open import Function.Inverse as Inv using (_↔_; inverse; module Inverse)
@@ -24,7 +25,7 @@ open import Function.Related.TypeIsomorphisms
 open import Relation.Unary using (Pred ; _∪_ ; _∩_)
 open import Relation.Binary using (REL)
 open import Relation.Binary.PropositionalEquality as P
-  using (_≡_; _≗_; refl)
+  using (_≡_; refl)
 
 open Related.EquationalReasoning hiding (_≡⟨_⟩_)
 private

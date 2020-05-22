@@ -21,6 +21,7 @@ open import Function.Equality as Eq
   using (_⟶_; _⟨$⟩_) renaming (_∘_ to _⟪∘⟫_)
 open import Function.Equivalence using (Equivalence)
 open import Function.Injection using (Injective; Injection)
+open import Function.Equality.Pointwise as FP
 open import Relation.Binary.PropositionalEquality as P using (_≡_)
 
 ------------------------------------------------------------------------
@@ -97,8 +98,8 @@ leftInverse : ∀ {f t} {From : Set f} {To : Set t} →
               (∀ x → from (to x) ≡ x) →
               From ↞ To
 leftInverse to from invˡ = record
-  { to              = P.→-to-⟶ to
-  ; from            = P.→-to-⟶ from
+  { to              = FP.→-to-⟶ to
+  ; from            = FP.→-to-⟶ from
   ; left-inverse-of = invˡ
   }
 

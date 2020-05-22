@@ -33,6 +33,7 @@ open import Data.Vec.Base as V using (Vec; _∷_; [])
 import Data.Vec.Properties as VP
 open import Level using (Level)
 open import Function.Base using (_∘_; flip)
+import Function.Equality.Pointwise as FP
 open import Function.Inverse using (Inverse)
 open import Relation.Binary.PropositionalEquality as P
   using (_≡_; _≢_; refl; sym; cong)
@@ -105,7 +106,7 @@ fromList-index (there x∈xs) = fromList-index x∈xs
 ↔Vec : ∀ {n} → Inverse (≡-setoid A n) (P.setoid (Vec A n))
 ↔Vec = record
   { to = record { _⟨$⟩_ = toVec ; cong = VP.tabulate-cong }
-  ; from = P.→-to-⟶ fromVec
+  ; from = FP.→-to-⟶ fromVec
   ; inverse-of = record
     { left-inverse-of  = VP.lookup∘tabulate ∘ lookup
     ; right-inverse-of = VP.tabulate∘lookup

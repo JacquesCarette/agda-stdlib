@@ -18,7 +18,8 @@ open import Level
 open import Relation.Binary
 open import Function.Equality as F
   using (_⟶_; _⟨$⟩_ ; Π) renaming (_∘_ to _⟪∘⟫_)
-open import Relation.Binary.PropositionalEquality as P using (_≡_)
+open import Function.Equality.Pointwise as P
+open import Relation.Binary.PropositionalEquality as PE using (_≡_)
 
 ------------------------------------------------------------------------
 -- Injective functions
@@ -49,7 +50,7 @@ record Injection {f₁ f₂ t₁ t₂}
 infix 3 _↣_
 
 _↣_ : ∀ {f t} → Set f → Set t → Set _
-From ↣ To = Injection (P.setoid From) (P.setoid To)
+From ↣ To = Injection (PE.setoid From) (PE.setoid To)
 
 injection : ∀ {f t} {From : Set f} {To : Set t} → (to : From → To) →
             (∀ {x y} → to x ≡ to y → x ≡ y) → From ↣ To

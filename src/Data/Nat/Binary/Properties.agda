@@ -21,6 +21,7 @@ open import Data.Sum.Base using (_⊎_; inj₁; inj₂)
 open import Function using (_∘_; _$_; id)
 open import Function.Definitions using (Injective)
 open import Function.Definitions.Core2 using (Surjective)
+open import Function.Equality.Pointwise using (_≗_)
 open import Level using (0ℓ)
 open import Relation.Binary
 open import Relation.Binary.Consequences

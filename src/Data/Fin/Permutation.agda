@@ -16,11 +16,12 @@ open import Data.Nat.Base using (ℕ; suc; zero)
 open import Data.Product using (proj₂)
 open import Function.Inverse as Inverse using (_↔_; Inverse; _InverseOf_)
 open import Function.Equality using (_⟨$⟩_)
+open import Function.Equality.Pointwise using (→-to-⟶)
 open import Function using (_∘_)
 open import Relation.Nullary using (¬_; yes; no)
 open import Relation.Nullary.Negation using (contradiction)
 open import Relation.Binary.PropositionalEquality as P
-  using (_≡_; _≢_; refl; trans; sym; →-to-⟶; cong; cong₂)
+  using (_≡_; _≢_; refl; trans; sym; cong; cong₂)
 open P.≡-Reasoning
 
 ------------------------------------------------------------------------

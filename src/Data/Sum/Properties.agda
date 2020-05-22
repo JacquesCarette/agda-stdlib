@@ -11,6 +11,7 @@ module Data.Sum.Properties where
 open import Level
 open import Data.Sum.Base
 open import Function
+open import Function.Equality.Pointwise
 open import Relation.Binary using (Decidable)
 open import Relation.Binary.PropositionalEquality
 open import Relation.Nullary using (yes; no)

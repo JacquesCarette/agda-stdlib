@@ -16,6 +16,7 @@ module Function.Equivalence where
 open import Function.Base using (flip)
 open import Function.Equality as F
   using (_⟶_; _⟨$⟩_) renaming (_∘_ to _⟪∘⟫_)
+import Function.Equality.Pointwise as FP
 open import Level
 open import Relation.Binary hiding (_⇔_)
 import Relation.Binary.PropositionalEquality as P
@@ -42,8 +43,8 @@ From ⇔ To = Equivalence (P.setoid From) (P.setoid To)
 equivalence : ∀ {f t} {From : Set f} {To : Set t} →
               (From → To) → (To → From) → From ⇔ To
 equivalence to from = record
-  { to   = P.→-to-⟶ to
-  ; from = P.→-to-⟶ from
+  { to   = FP.→-to-⟶ to
+  ; from = FP.→-to-⟶ from
   }
 
 ------------------------------------------------------------------------

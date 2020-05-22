@@ -21,7 +21,7 @@ open import Data.Table.Base
 open import Data.Nat.Base using (ℕ)
 open import Function using (_∘_)
 open import Relation.Binary.PropositionalEquality
-  as P using (_≡_; _→-setoid_)
+  as P using (_≡_)
 
 setoid : ∀ {c p} → Setoid c p → ℕ → Setoid _ _
 setoid S n = record

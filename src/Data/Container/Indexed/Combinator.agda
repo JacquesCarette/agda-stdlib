@@ -15,12 +15,13 @@ open import Data.Unit.Base using (⊤)
 open import Data.Product as Prod hiding (Σ) renaming (_×_ to _⟨×⟩_)
 open import Data.Sum renaming (_⊎_ to _⟨⊎⟩_)
 open import Function as F hiding (id; const) renaming (_∘_ to _⟨∘⟩_)
+open import Function.Equality.Pointwise as FP using (_≗_)
 open import Function.Inverse using (_↔̇_; inverse)
 open import Level
 open import Relation.Unary using (Pred; _⊆_; _∪_; _∩_; ⋃; ⋂)
   renaming (_⟨×⟩_ to _⟪×⟫_; _⟨⊙⟩_ to _⟪⊙⟫_; _⟨⊎⟩_ to _⟪⊎⟫_)
 open import Relation.Binary.PropositionalEquality as P
-  using (_≗_; refl)
+  using (refl)
 
 ------------------------------------------------------------------------
 -- Combinators
@@ -153,8 +154,8 @@ module Constant (ext : ∀ {ℓ} → Extensionality ℓ ℓ) where
   correct : ∀ {i o ℓ₁ ℓ₂} {I : Set i} {O : Set o} (X : Pred O ℓ₁)
             {Y : Pred O ℓ₂} → ⟦ const X ⟧ Y ↔̇ F.const X Y
   correct X {Y} = record
-    { to         = P.→-to-⟶ to
-    ; from       = P.→-to-⟶ from
+    { to         = FP.→-to-⟶ to
+    ; from       = FP.→-to-⟶ from
     ; inverse-of = record
       { right-inverse-of = λ _ → refl
       ; left-inverse-of  = to∘from

@@ -16,7 +16,8 @@ open import Data.List.Relation.Unary.Any as Any using (here; there)
 open import Data.List.Relation.Unary.First
 import Data.Sum.Base as Sum
 open import Function
-open import Relation.Binary.PropositionalEquality as P using (_≡_; refl; _≗_)
+open import Function.Equality.Pointwise using (_≗_)
+open import Relation.Binary.PropositionalEquality as P using (_≡_; refl)
 open import Relation.Unary
 open import Relation.Nullary.Negation
 

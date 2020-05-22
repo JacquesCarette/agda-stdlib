@@ -15,8 +15,9 @@ open import Data.Bool.Base using (false; true)
 open import Data.List.Base
 open import Data.List.Properties
 open import Function
+open import Function.Equality.Pointwise
 open import Relation.Binary.PropositionalEquality as P
-  using (_≡_; _≢_; _≗_; refl)
+  using (_≡_; _≢_; refl)
 open P.≡-Reasoning
 
 ------------------------------------------------------------------------

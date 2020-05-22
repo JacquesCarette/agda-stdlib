@@ -18,9 +18,10 @@ open import Function.Base using (flip)
 open import Function.Bijection hiding (id; _∘_; bijection)
 open import Function.Equality as F
   using (_⟶_) renaming (_∘_ to _⟪∘⟫_)
+open import Function.Equality.Pointwise as FP
 open import Function.LeftInverse as Left hiding (id; _∘_)
 open import Relation.Binary
-open import Relation.Binary.PropositionalEquality as P using (_≗_; _≡_)
+open import Relation.Binary.PropositionalEquality as P using (_≡_)
 open import Relation.Unary using (Pred)
 
 ------------------------------------------------------------------------
@@ -91,8 +92,8 @@ inverse : ∀ {f t} {From : Set f} {To : Set t} →
           (∀ x → to (from x) ≡ x) →
           From ↔ To
 inverse to from from∘to to∘from = record
-  { to   = P.→-to-⟶ to
-  ; from = P.→-to-⟶ from
+  { to   = FP.→-to-⟶ to
+  ; from = FP.→-to-⟶ from
   ; inverse-of = record
     { left-inverse-of  = from∘to
     ; right-inverse-of = to∘from

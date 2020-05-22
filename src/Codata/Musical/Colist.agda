@@ -27,6 +27,7 @@ open import Data.Sum.Base as Sum using (_⊎_; inj₁; inj₂; [_,_]′)
 open import Data.Vec.Bounded as Vec≤ using (Vec≤)
 open import Function.Base
 open import Function.Equality using (_⟨$⟩_)
+open import Function.Equality.Pointwise
 open import Function.Inverse as Inv using (_↔_; _↔̇_; Inverse; inverse)
 open import Level using (_⊔_)
 open import Relation.Binary
@@ -183,8 +184,8 @@ Any-map {P = P} {f} {xs} = inverse to from from∘to to∘from
 Any-⋎ : ∀ {a p} {A : Set a} {P : A → Set p} xs {ys} →
         Any P (xs ⋎ ys) ↔ (Any P xs ⊎ Any P ys)
 Any-⋎ {P = P} = λ xs → record
-  { to         = P.→-to-⟶ (to xs)
-  ; from       = P.→-to-⟶ (from xs)
+  { to         = →-to-⟶ (to xs)
+  ; from       = →-to-⟶ (from xs)
   ; inverse-of = record
     { left-inverse-of  = from∘to xs
     ; right-inverse-of = to∘from xs
@@ -296,8 +297,8 @@ Any-resp f (x ∷ xs≈) (there p) = there (Any-resp f (♭ xs≈) p)
 Any-cong : ∀ {a p q} {A : Set a} {P : A → Set p} {Q : A → Set q}
            {xs ys} → P ↔̇ Q → xs ≈ ys → Any P xs ↔ Any Q ys
 Any-cong {A = A} {P} {Q} {xs} {ys} P↔Q = λ xs≈ys → record
-  { to         = P.→-to-⟶ (to xs≈ys)
-  ; from       = P.→-to-⟶ (from xs≈ys)
+  { to         = →-to-⟶ (to xs≈ys)
+  ; from       = →-to-⟶ (from xs≈ys)
   ; inverse-of = record
     { left-inverse-of  = from∘to _
     ; right-inverse-of = to∘from _
@@ -395,8 +396,8 @@ data _⊑_ {a} {A : Set a} : Colist A → Colist A → Set a where
 Any-∈ : ∀ {a p} {A : Set a} {P : A → Set p} {xs} →
         Any P xs ↔ ∃ λ x → x ∈ xs × P x
 Any-∈ {P = P} = record
-  { to         = P.→-to-⟶ to
-  ; from       = P.→-to-⟶ (λ { (x , x∈xs , p) → from x∈xs p })
+  { to         = →-to-⟶ to
+  ; from       = →-to-⟶ (λ { (x , x∈xs , p) → from x∈xs p })
   ; inverse-of = record
     { left-inverse-of  = from∘to
     ; right-inverse-of = λ { (x , x∈xs , p) → to∘from x∈xs p }

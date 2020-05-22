@@ -10,9 +10,10 @@ module Data.Container.Morphism.Properties where
 
 open import Level using (_⊔_; suc)
 open import Function as F using (_$_)
+open import Function.Equality.Pointwise
 open import Data.Product using (∃; proj₁; proj₂; _,_)
 open import Relation.Binary using (Setoid)
-open import Relation.Binary.PropositionalEquality as P using (_≡_; _≗_)
+open import Relation.Binary.PropositionalEquality as P using (_≡_)
 
 open import Data.Container.Core
 open import Data.Container.Morphism

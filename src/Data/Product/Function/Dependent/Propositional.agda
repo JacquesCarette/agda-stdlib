@@ -15,6 +15,7 @@ open import Data.Product.Relation.Binary.Pointwise.NonDependent
 open import Relation.Binary hiding (_⇔_)
 open import Function.Base
 open import Function.Equality using (_⟶_; _⟨$⟩_)
+open import Function.Equality.Pointwise
 open import Function.Equivalence as Equiv using (_⇔_; module Equivalence)
 open import Function.HalfAdjointEquivalence using (↔→≃; _≃_)
 open import Function.Injection as Inj
@@ -106,7 +107,7 @@ module _ {a₁ a₂} {A₁ : Set a₁} {A₂ : Set a₂}
 
     to = map (_≃_.to A₁≃A₂) (Injection.to B₁↣B₂ ⟨$⟩_)
 
-    to-injective : Injective (P.→-to-⟶ {B = P.setoid _} to)
+    to-injective : Injective (→-to-⟶ {B = P.setoid _} to)
     to-injective {(x₁ , x₂)} {(y₁ , y₂)} =
       (Inverse.to Σ-≡,≡↔≡ ⟨$⟩_) ∘′
 
@@ -179,8 +180,8 @@ module _ {a₁ a₂} {A₁ : Set a₁} {A₂ : Set a₂}
       (∀ {x} → B₁ (LeftInverse.from A₁↞A₂ ⟨$⟩ x) ↞ B₂ x) →
       Σ A₁ B₁ ↞ Σ A₂ B₂
   ↞ A₁↞A₂ B₁↞B₂ = record
-    { to              = P.→-to-⟶ to
-    ; from            = P.→-to-⟶ from
+    { to              = →-to-⟶ to
+    ; from            = →-to-⟶ from
     ; left-inverse-of = left-inverse-of
     }
     where
@@ -213,9 +214,9 @@ module _ {a₁ a₂} {A₁ : Set a₁} {A₂ : Set a₂}
       (∀ {x} → B₁ x ↠ B₂ (Surjection.to A₁↠A₂ ⟨$⟩ x)) →
       Σ A₁ B₁ ↠ Σ A₂ B₂
   ↠ A₁↠A₂ B₁↠B₂ = record
-    { to         = P.→-to-⟶ to
+    { to         = →-to-⟶ to
     ; surjective = record
-      { from             = P.→-to-⟶ from
+      { from             = →-to-⟶ from
       ; right-inverse-of = right-inverse-of
       }
     }
